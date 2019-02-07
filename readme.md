@@ -44,7 +44,7 @@ Replace all instances of "thing" with your choice.
 * We want to create a new document in the database by asking the user for the input for it.
 * In askForInput(), add as many readline.questions as you need to get all the input for your thing
 * Store the answers in the object newThing
-* When all questions are answered call create()
+* When all questions are answered call create(), passing in newThing
 * In create.js, use your mongoose model to save the information to the database.
 * Show the main menu again in the done callback
 * Bonus: add verification. Ask if the information looks good as a yes/no questions. If the answer is yes, save it. If the answer is no, ask for the input again.
