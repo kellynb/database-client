@@ -1,6 +1,6 @@
 
-function findById(done){
-    
+function findById(id, done){
+    done();
 }
 
 

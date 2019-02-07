@@ -1,11 +1,9 @@
-const mongoose = require('mongoose');
 const create = require("./create");
 const findAll = require("./find-all");
 const findById = require("./find-by-id");
-//mongoose.connect('mongodb://localhost:27017/test', {useNewUrlParser: true});
+const findBy = require("./find-by");
 
-
-global.readline = require('readline').createInterface({
+const readline = require('readline').createInterface({
   input: process.stdin,
   output: process.stdout
 })
@@ -33,7 +31,7 @@ function getMenuInput(){
       findThingById();
     }
     if(answer === "4"){
-      createThing();
+      findThing();
     }
     if(answer === "5"){
       readline.close();
@@ -41,13 +39,44 @@ function getMenuInput(){
     }
   });
 }
+let newThing = {
+
+}
+
+function askForInput(){
+    readline.question("What is the name?", function(answer) {
+      newThing.name = answer;
+      create(newThing,()=>{
+        printMenu();
+      });
+    });
+}
 
 function createThing(){
-
+  askForInput();
 }
 function findAllThings(){
-
+  findAll((data)=>{
+    //show data
+    printMenu();
+  });
 }
 function findThingById(){
+  readline.question("What is the id?", function(answer) {
+    findById(answer,(result)=>{
+      //print the result
+      printMenu();
+    });
+  });
 
+  
+}
+function findThing(){
+  readline.question("What name do you want to find?", function(answer) {
+    findBy(answer,(result)=>{
+      //print the result
+      printMenu();
+    });
+  });
+  
 }

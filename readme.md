@@ -15,18 +15,33 @@ Replace all instances of "thing" with your choice.
 
 ## Database
 * Make sure you have a database setup in mlab
-* Use mongoose to connect to it
+* Use mongoose to connect to it in index.js
+* Decide on what your collection is going to be
+* Use mlab or robo 3t to add some test data
 
 
 ## Model
 * Create a model folder and a model file for whatever "thing" you have choosen
+* Create a mongoose schema and model with at least 3 properties
 
 ## Find All
 * Code in find-all.js
-* Use the model.find() to retrieve all things from the database
-* Loop the data array and console.log out each item in a user friendly manner, don't console.log the entire array
-* Display the main menu again
+* Use the mongoose model.find() to retrieve all things from the database
+* In the done callback, loop the data array and console.log out each item in a user friendly manner, don't console.log the entire array
+* Then display the main menu again
 * Bonus: only show 5 items at a time and have the user hit enter to page to the next 5 items.
+
+## Find By Id
+* Code in find-by-id.js
+* Use the model.findById() to retrieve one thing by id
+* In the done callback, console log out the thing in a user friendly way
+* Then display the main menu again
+
+## Find By
+* Code in find-by.js
+* Use the model.find() to retrieve one thing by a certain property depending on what your thing is 
+* In the done callback, console log out the thing in a user friendly way
+* Then display the main menu again
 
 ## Create
 * We want to create a new document in the database by asking the user for the input for it.
@@ -34,7 +49,8 @@ Replace all instances of "thing" with your choice.
 * Add as many readline.questions as you need to get all the input for your thing
 * Store the answers in the object newThing
 * When all questions are answered, use your mongoose model to save the information to the database.
-* After save, show the main menu again
+* Show the main menu again in the done callback
 * Bonus: add verification. Ask if the information looks good as a yes/no questions. If the answer is yes, save it. If the answer is no, ask for the input again.
 
-
+## Question
+* Why is it important to put the mongoose code in seperate files such as create.js instead of in index.js
