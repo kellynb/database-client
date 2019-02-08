@@ -46,8 +46,14 @@ let newThing = {
 function askForInput(){
     readline.question("What is the name?", function(answer) {
       newThing.name = answer;
-      create(newThing,()=>{
-        printMenu();
+      readline.question("What is the age?", function(answer) {
+        newThing.age = answer;
+        readline.question("What is the occupation?", function(answer) {
+          newThing.occupation = answer;
+          create(newThing,()=>{
+            printMenu();
+          });
+        });
       });
     });
 }
