@@ -2,6 +2,9 @@ const create = require("./create");
 const findAll = require("./find-all");
 const findById = require("./find-by-id");
 const findBy = require("./find-by");
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://Kellyn1:DancePants5.6@ds115045.mlab.com:15045/your-project', {useNewUrlParser: true});
 
 const readline = require('readline').createInterface({
   input: process.stdin,
@@ -46,10 +49,10 @@ let newThing = {
 function askForInput(){
     readline.question("What is the name?", function(answer) {
       newThing.name = answer;
-      readline.question("What is the age?", function(answer) {
-        newThing.age = answer;
-        readline.question("What is the occupation?", function(answer) {
-          newThing.occupation = answer;
+      readline.question("What is the abv?", function(answer) {
+        newThing.abv = answer;
+        readline.question("What are the ibu's?", function(answer) {
+          newThing.ibu = answer;
           create(newThing,()=>{
             printMenu();
           });
@@ -63,26 +66,34 @@ function createThing(){
 }
 function findAllThings(){
   findAll((data)=>{
-    //show data
+    console.log(data);
     printMenu();
   });
 }
 function findThingById(){
   readline.question("What is the id?", function(answer) {
     findById(answer,(result)=>{
-      //print the result
+      console.log(result);
       printMenu();
     });
   });
 
   
 }
+
+let findSomething = {
+
+}
 function findThing(){
-  readline.question("What name do you want to find?", function(answer) {
-    findBy(answer,(result)=>{
-      //print the result
-      printMenu();
-    });
+  readline.question("What category do you want to find?", function(answer) {
+    findSomething.category = answer;
+    readline.question("What is the value?", answer => {
+      findSomething.value = answer;
+      findBy(findSomething,(result)=>{
+        console.log(result);
+        printMenu();
+      });
+    })
   });
   
 }
